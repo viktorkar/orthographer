@@ -9,6 +9,7 @@ Contents
 - [Data](#data)
   - [IAM](#iam)
   - [CVL](#cvl)
+  - [IMGUR5K](#imgur5k)
   - [System dataset](#system-dataset)
 - [Running the application](#running-the-application)
   - [Arguments](#arguments)
@@ -23,9 +24,6 @@ Contents
 - [Finetuning YOLOv5 for handwritten text detection](#finetuning-yolov5-for-handwritten-text-detection)
   - [Preparing the data](#preparing-the-data)
   - [Finetuning the model](#finetuning-the-model)
-- [Finetuning STAR-Net for handwritten text recognition](#finetuning-star-net-for-handwritten-text-recognition)
-  - [Preparing the data](#preparing-the-data-1)
-  - [Finetuning the model](#finetuning-the-model-1)
 - [Acknowledgements](#acknowledgements)
   - [Reference](#reference)
   - [Contact](#contact)
@@ -86,7 +84,8 @@ sc-hwn-system
 The IAM database is used to finetune YOLOv5 and STAR-Net and for evaluation. It can be downloaded [here](https://fki.tic.heia-fr.ch/databases/iam-handwriting-database). For training and evaluation we use the [Aachen splits](data/IAM/aachen_splits) downloaded [here](https://www.openslr.org/56/). 
 
 ## CVL
-TODO
+
+## IMGUR5K
 
 ## System dataset
 The [system dataset](data/system_dataset) is used in [benchmark.py](src/benchamrk.py) to evaluate the entire system. It was constructed to include some handwritten words with spelling errors.
@@ -99,9 +98,9 @@ python main.py
 ## Arguments
 ```--td_model [-d]```: Text detection model *{yolo, east}*, *default=yolo* <br>
 ```--tr_model [-r]```: Text recognition model *{resnet, dtrb}*, *default=dtrb* <br>
-```--post_process [-p]```: Choose how to post process recognized text. *{trocr, spellcheck, neuspell, None}*, *default=spellcheck*.<br>
-```--spell_check [-s]```: Choose how to perform the spell correction.*{spellcheck}*, *default=spellcheck*<br>
-```--video_source [-v]```: Video source *{0=webcam, 1=external}*, *default=0*. <br>
+```--post_process [-p]```: Choose how to post process recognized text. *{trocr, symspell, neuspell, None}*, *default=symspell*.<br>
+```--spell_check [-s]```: Choose how to perform the spell correction.*{symspell, neuspell}*, *default=symspell*<br>
+```--video_source [-v]```: Video source, *default=0*. <br>
 
 # Benchmarking of models
 There are two notebooks available to evaluate individal models and one file available for evaluation of the entire system. More information about the benchmarks are available in [benchmark-notebook/README.md](benchmark-notebook/README.md).
@@ -122,7 +121,7 @@ The handwritten text recognition models are evaluated using the notebook:[text-r
 ### Acquired results
 |Model |CER % |WER % |Inference Time (ms) / word|
 |---                 |---   |---    |---   
-|STAR-Net            |8.39  |23.95 |13.73
+|OrthoNet            |6.24  |18.72 |13.73
 |ResNet_CTC          |35.00 |68.66 |55.33   
 |DenseNet_CTC        |52.72 |86.71 |5.69   
 |CRNN_VGG_BiLSTM_CTC |34.38 |44.52 |17.58  
@@ -136,18 +135,24 @@ python benchmark.py
 ### Arguments
 ```--td_model [-d]```: Text detection model *{yolo, east}*, *default=yolo* <br>
 ```--tr_model [-r]```: Text recognition model *{resnet, dtrb}*, *default=dtrb* <br>
-```--post_process [-p]```: Choose how to post process recognized text. *{trocr, spellcheck, neuspell, None}*, *default=spellcheck*.<br>
+```--post_process [-p]```: Choose how to post process recognized text. *{trocr, symspell, neuspell, None}*, *default=symspell*.<br>
+```--spell_check [-s]```: Choose how to perform the spell correction.*{symspell, neuspell}*, *default=symspell*<br>
 ```--data_path [-p]```: Path to the data to run the system on, *default='../data/system_dataset/'* <br>
 ```--max_samples [-m]```: Number of samples to test on. *default=None* <br>
 ```--output_name [-o]```: Name of the file where the benchmark results are stored. <br>
 
 ### Acquired results
-|Detection |Recognition|Post Process|CER (%)|F1 (%)| Precision (%) |Recall (%) |Inference (ms) / word|
-|---            |---   |---    |--- |--- |--- |---|---
-|YOLOv5s        |STAR-Net |Spellcheck |9.126 |47.932 |51.772 |53.535 |-     
-|YOLOv5s        |STAR-Net |TrOCR      |7.973 |47.842 |48.610 |56.772|-    
-|YOLOv5s        |STAR-Net |Neuspell   |9.162 |48.095 |51.868 |54.045 |-    
-|YOLOv5s        |STAR-Net |None   |9.01 |41.599 |35.415 |60.798 |-
+Best results were acquired using the following configuration:
+- Text Detection: YOLOv5s
+- Text Recognition: OrthoNet
+- Post Process: Symspell
+- Spell Check: Symspell
+
+CER (%)|F1 (%)| Recall (%) | Precision (%) |Total Inference Time (ms) / word|
+|--- |--- |--- |---|---
+5.92| 60.26| 68.68| 56.91| 16.656    
+
+To calculate F1, recall and precision, the benchmark compares the true incorrect spelled words with the words that the system flags as incorrectly spelled.
 
 # Finetuning YOLOv5 for handwritten text detection
 The YOLOv5 model is finetuned for handwritten text detection using the IAM Forms dataset. Read the chapter [Data](#data) for how to download and place the dataset.
@@ -155,18 +160,7 @@ The YOLOv5 model is finetuned for handwritten text detection using the IAM Forms
 The data is prepared running the notebook: [IAM_yolo_preprocess.ipynb](data-preprocessing/IAM_yolo_preprocess.ipynb). Running the notebook creates a folder *data/IAM_yolo* containing the data needed to finetune the model. Upload the folder to the Google Drive and edit the *data.yaml* file to match your paths.
 ## Finetuning the model
 The model is trained following the Google Colab notebook found [here](https://colab.research.google.com/drive/1rBJSTW-RZ9AzbR12BEjNkh58NkczuZky?usp=sharing).
-
-# Finetuning STAR-Net for handwritten text recognition
-TODO
-## Preparing the data
-TODO
-## Finetuning the model
-TODO
 # Acknowledgements
-TODO
 ## Reference
-TODO
 ## Contact
-TODO
 ## License
-TODO

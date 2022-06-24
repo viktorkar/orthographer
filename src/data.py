@@ -261,6 +261,7 @@ class IAM_yolo:
             data["bounding_boxes"].append(bounding_boxes)
 
         return pd.DataFrame(data)
+        
 ###########################################################################################################
 class CVL:
     def __init__(self):
@@ -412,12 +413,14 @@ class CVL:
 
         return pd.DataFrame(data)
 
+###########################################################################################################
 class Imgur5k:
     def __init__(self):
         self.root_path = "../data/IMGUR5K/"
         self.info_path = self.root_path + "dataset_info/"
         self.data_path = self.root_path + "data/"
 
+    ##############################################################################
     def get_dict(self):
         result = {}
         annotation_file = self.info_path + "imgur5k_annotations.json"
@@ -440,6 +443,7 @@ class Imgur5k:
                     result[image_id]['word_ids'].append(word_id)
         return result
 
+    ##############################################################################
     def get_words(self) -> pd.DataFrame:
         """Read all word images from the IAM dataset.
         Returns:
@@ -461,6 +465,7 @@ class Imgur5k:
                 data["orig_img_id"].append(img_id)
         return pd.DataFrame(data)
 
+    ##############################################################################
     def get_splits(self):
         splits = ['train', 'val', 'test']
         result = {'train': [], 'val': [], 'test': []}
