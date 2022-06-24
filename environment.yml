@@ -1,0 +1,31 @@
+name: ortographer
+channels:
+  - conda-forge
+  - defaults
+  - pytorch
+dependencies:   
+  - python=3.9        # Python!
+  - numpy=1.22        # Powerful n-dimensional arrays and numerical computing tools.
+  - pandas=1.2        # Data analysis and manipulation tool.
+  - opencv=4.5        # Library for image processing.
+  - jupyter=1.0       # To edit and run Jupyter notebooks.
+  - matplotlib=3.4    # Tools for creating plots.
+  - seaborn=0.11      # Visualization library based on matplotlib.
+  - tqdm=4.64         # A progress bar library.
+  - shapely=1.7       # Package for manipulation and analysis of geometric objects in the Cartesian plane
+  - pytorch=1.11      # Deep Learning library.
+  - torchvision=0.12
+  - torchaudio=0.11
+  - pip               # Python's package-management system
+  - cudatoolkit=11.3  # Enable instead of -cpuonly if using pytorch with GPU. Only possible on Windows and Linux. See https://pytorch.org/get-started/locally/
+  #- cpuonly           # Enable instead of -cudatoolkit if using CPU only.
+  - pip: 
+    - transformers=4.18      # If you want support for GPU, use this. See https://huggingface.co/docs/transformers/installation
+    #- transformers[torch]    # Else use this if you are only using a CPU. 
+    - symspellpy=6.7         # Package used for spell correction.
+    - protobuf=3.20          # Requirement to run the model used in the transformers package. 
+    - pybind11=2.9           # Required by fastwer.
+    - fastwer=0.1            # Fast algorithm used to calculate CER and WER scores. https://github.com/kahne/fastwer
+        
+
+# - OBS. neuspell is also required if running with --post_process neuspell. See README.md or https://pypi.org/project/neuspell/.
