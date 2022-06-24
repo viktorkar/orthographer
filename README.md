@@ -52,7 +52,7 @@ Next, activate the environment:
 If you wish to run the program with the flag *--post_process neuspell*, you also need to install neuspell following [these](https://pypi.org/project/neuspell/) steps. We had problems downloading their pretrained models using the methods provided by their library but was able to do it manually using their [google drive folder](https://drive.google.com/drive/folders/1jgNpYe4TVSF4mMBVtFh4QfB2GovNPdh7?usp=sharing). Using neuspell in our system requires the **subwordbert-probwordnoise** pretrained model.
 
 # Models
-The system uses trained machine learning models for handwritten text detection and handwritten text recognition. All finetuned models can be found in the [google drive folder here](https://drive.google.com/drive/folders/1jRYy1_Cs7pLex1zoNjcQNYo363Kt2Mt6?usp=sharing). Acquired performances of the models are given under [Benchmarking of models](#benchmarking-of-models) and more information can be found in [models/README.md](models/README.md).
+The system uses trained machine learning models for handwritten text detection and handwritten text recognition. All finetuned models can be found in the [google drive folder here](https://drive.google.com/drive/folders/1p09AueBHQz16Miw9YkIWDLHjyx_uH3Kx?usp=sharing). Acquired performances of the models are given under [Benchmarking of models](#benchmarking-of-models) and more information can be found in [models/README.md](models/README.md).
 
 Recommended file structure.
 ```
