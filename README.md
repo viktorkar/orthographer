@@ -47,6 +47,13 @@ Next, activate the environment:
 
     $ conda activate ortographer
 
+## Jupyter Notebooks
+To run the conda environment in jupyter notebook, register the environment by running:
+
+    $ python -m ipykernel install --user --name=ortographer
+
+Now the environment can be selected in "Kernel > Change kernel" after starting jupyter notebook.
+
 # Models
 The system uses trained machine learning models for handwritten text detection and handwritten text recognition. All finetuned models can be found in the [google drive folder here](https://drive.google.com/drive/folders/1p09AueBHQz16Miw9YkIWDLHjyx_uH3Kx?usp=sharing). Acquired performances of the models are given under [Benchmarking of models](#benchmarking-of-models) and more information can be found in [models/README.md](models/README.md).
 
