@@ -1,5 +1,4 @@
 import cv2 as cv
-from neuspell.corrector_subwordbert import BertChecker
 from symspell import SymSpellClass
 from util import concat_boxes_to_image, convert_wordlist_to_string
 from trocr import TrOCR
@@ -25,9 +24,6 @@ class PostProcessModule:
         """Setup the post processing module. Makes sure the processor support the used language."""
         if self.pp_type == 'trocr' and self.language == 'en':      # TrOCR is only available for English.
             self.processor = TrOCR()
-        elif self.pp_type == 'neuspell' and self.language == 'en': # NeuSpell is only available for English.
-            self.processor = BertChecker()
-            self.processor.from_pretrained()
         elif self.pp_type == 'symspell':                           # Symspell is available for all languages.
             self.processor = SymSpellClass(self.language)
         else:
@@ -79,35 +75,6 @@ class PostProcessModule:
         return final_pred
 
     ####################################################################################################
-    def __improve_predictions_neuspell(self, rec_pred, ocr_dict):
-        """Improves the predictions of the text recognition module using NeuSpell."""
-        final_pred = []
-        
-        if len(rec_pred) == 0:
-            return 0, final_pred
-
-        rec_pred_string = convert_wordlist_to_string([x[0] for x in rec_pred])
-        neuspell_string = self.processor.correct(rec_pred_string)
-
-        for dict_value, (rec_string, rec_conf), neuspell_suggestion in zip(ocr_dict.values(), rec_pred, neuspell_string.split(' ')):
-            # If recognition system and BertChecker finds the same word or if the
-            # confidence of the prediction is really high, we say the prediction is correct.
-            if rec_string == neuspell_suggestion or rec_conf >= self.rec_min_conf:
-                final_pred.append(rec_string)
-            else:
-                # Else we check how similar the two predictions are. If the similarity is high,
-                # use the BertChecker prediction.
-                longest_string_length = max(len(neuspell_suggestion), len(rec_string))
-                diff = self.ed.compare(rec_string, neuspell_suggestion, longest_string_length)
-                if diff < 3:
-                    final_pred.append(neuspell_suggestion)
-                    dict_value[1].append((neuspell_suggestion, self.rec_min_conf))
-                else:
-                    final_pred.append(rec_string)
-
-        return final_pred
-    
-    ####################################################################################################
     def update_language(self, language):
         """Update the language of the post processing module and creates a new instance of it."""
         if self.language != language:
@@ -136,8 +103,6 @@ class PostProcessModule:
             pred_strings = self.__improve_predictions_trocr(rec_pred, cropped_images, max_box_height, ocr_dict)
         elif self.pp_type == 'symspell':
             pred_strings = self.__improve_predictions_symspell(rec_pred, ocr_dict)
-        elif self.pp_type == 'neuspell':
-            pred_strings = self.__improve_predictions_neuspell(rec_pred, ocr_dict)
         else:
             pred_strings = [x[0] for x in rec_pred]
 

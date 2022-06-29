@@ -13,8 +13,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--td_model', type=str, default="yolo" ,choices=["yolo", "east"],  help='Text detection model use', )
     parser.add_argument('-r', '--tr_model', type=str, default="dtrb", choices=["resnet", "dtrb"], help="Text recognition model to use.")
-    parser.add_argument('-p', '--post_process', type=str, default="symspell" ,choices=["symspell", "trocr", "None", "neuspell"],  help='Improve text recognition by postprocessing')
-    parser.add_argument('-s', '--spell_check', type=str, default="symspell", choices=["symspell", "neuspell"], help="Spellcheck method to use.")
+    parser.add_argument('-p', '--post_process', type=str, default="symspell" ,choices=["symspell", "trocr", "None"],  help='Improve text recognition by postprocessing')
+    parser.add_argument('-s', '--spell_check', type=str, default="symspell", choices=["symspell"], help="Spellcheck method to use.")
     parser.add_argument('-v', '--video_source', type=int, default=0, choices=[0, 1], help='Input video source, 0=webcam, 1=connected device')
     args = parser.parse_args()
 

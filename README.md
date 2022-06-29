@@ -47,10 +47,6 @@ Next, activate the environment:
 
     $ conda activate ortographer
 
-## Additional optional dependencies
-**neuspell**<br>
-If you wish to run the program with the flag *--post_process neuspell*, you also need to install neuspell following [these](https://pypi.org/project/neuspell/) steps. We had problems downloading their pretrained models using the methods provided by their library but was able to do it manually using their [google drive folder](https://drive.google.com/drive/folders/1jgNpYe4TVSF4mMBVtFh4QfB2GovNPdh7?usp=sharing). Using neuspell in our system requires the **subwordbert-probwordnoise** pretrained model.
-
 # Models
 The system uses trained machine learning models for handwritten text detection and handwritten text recognition. All finetuned models can be found in the [google drive folder here](https://drive.google.com/drive/folders/1p09AueBHQz16Miw9YkIWDLHjyx_uH3Kx?usp=sharing). Acquired performances of the models are given under [Benchmarking of models](#benchmarking-of-models) and more information can be found in [models/README.md](models/README.md).
 
@@ -98,8 +94,8 @@ python main.py
 ## Arguments
 ```--td_model [-d]```: Text detection model *{yolo, east}*, *default=yolo* <br>
 ```--tr_model [-r]```: Text recognition model *{resnet, dtrb}*, *default=dtrb* <br>
-```--post_process [-p]```: Choose how to post process recognized text. *{trocr, symspell, neuspell, None}*, *default=symspell*.<br>
-```--spell_check [-s]```: Choose how to perform the spell correction.*{symspell, neuspell}*, *default=symspell*<br>
+```--post_process [-p]```: Choose how to post process recognized text. *{trocr, symspell, None}*, *default=symspell*.<br>
+```--spell_check [-s]```: Choose how to perform the spell correction.*{symspell}*, *default=symspell*<br>
 ```--video_source [-v]```: Video source, *default=0*. <br>
 
 # Benchmarking of models
@@ -135,8 +131,8 @@ python benchmark.py
 ### Arguments
 ```--td_model [-d]```: Text detection model *{yolo, east}*, *default=yolo* <br>
 ```--tr_model [-r]```: Text recognition model *{resnet, dtrb}*, *default=dtrb* <br>
-```--post_process [-p]```: Choose how to post process recognized text. *{trocr, symspell, neuspell, None}*, *default=symspell*.<br>
-```--spell_check [-s]```: Choose how to perform the spell correction.*{symspell, neuspell}*, *default=symspell*<br>
+```--post_process [-p]```: Choose how to post process recognized text. *{trocr, symspell, None}*, *default=symspell*.<br>
+```--spell_check [-s]```: Choose how to perform the spell correction.*{symspell}*, *default=symspell*<br>
 ```--data_path [-p]```: Path to the data to run the system on, *default='../data/system_dataset/'* <br>
 ```--max_samples [-m]```: Number of samples to test on. *default=None* <br>
 ```--output_name [-o]```: Name of the file where the benchmark results are stored. <br>

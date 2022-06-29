@@ -1,7 +1,6 @@
 import cv2 as cv
 
 from symspell import SymSpellClass
-from neuspell_class import NeuSpellClass
 
 class SpellCheckModule:
     """The module used for spellchecking. The module can be changed to use different spellcheckers as long
@@ -19,8 +18,6 @@ class SpellCheckModule:
         supports the language."""
         if self.sc_type == 'symspell':
             self.spellchecker = SymSpellClass(self.language)
-        elif self.sc_type == 'neuspell':
-            self.spellchecker = NeuSpellClass()
     
     ####################################################################################################
     def update_language(self, language):
