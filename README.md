@@ -91,7 +91,7 @@ The IAM database is used to finetune YOLOv5 and STAR-Net and for evaluation. It 
 ## IMGUR5K
 
 ## System dataset
-The [system dataset](data/system_dataset) is used in [benchmark.py](src/benchamrk.py) to evaluate the entire system. It was constructed to include some handwritten words with spelling errors.
+The [system dataset](data/system_dataset) is used in [benchmark.py](src/benchmark.py) to evaluate the entire system. It was constructed to include some handwritten words with spelling errors.
 
 # Running the application
 ```cmd
@@ -106,7 +106,7 @@ python main.py
 ```--video_source [-v]```: Video source, *default=0*. <br>
 
 # Benchmarking of models
-There are two notebooks available to evaluate individal models and one file available for evaluation of the entire system. More information about the benchmarks are available in [benchmark-notebook/README.md](benchmark-notebook/README.md).
+There are two notebooks available to evaluate individual models and one file available for evaluation of the entire system. More information about the benchmarks are available in [benchmark-notebook/README.md](benchmark-notebook/README.md).
 ## Text detection benchmark
 The handwritten text detection models are evaluated using the notebook: [text-detection-benchmark.ipynb](benchmark-notebook/text-detection-benchmark.ipynb). The notebook runs the models on the IAM Forms (Aachen test split) dataset.
 
@@ -130,7 +130,7 @@ The handwritten text recognition models are evaluated using the notebook:[text-r
 |CRNN_VGG_BiLSTM_CTC |34.38 |44.52 |17.58  
 
 ## Full system and spell correction
-To evaluate the entierty of the system and check how many spelling mistakes the system finds, run the file [benchmark.py](src/benchmar.py). <br>
+To evaluate the entirety of the system and check how many spelling mistakes the system finds, run the file [benchmark.py](src/benchmark.py). <br>
 ```cmd
 cd src
 python benchmark.py
