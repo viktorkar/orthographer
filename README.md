@@ -164,6 +164,79 @@ The data is prepared running the notebook: [IAM_yolo_preprocess.ipynb](data-prep
 ## Finetuning the model
 The model is trained following the Google Colab notebook found [here](https://colab.research.google.com/drive/1rBJSTW-RZ9AzbR12BEjNkh58NkczuZky?usp=sharing).
 # Acknowledgements
+We would like to thank Haute Ecole d'Ingénierie et de Gestion du Canton de Vaud (HEIG-VD) for providing us with the opportunity to realize this project. Particularly, we want to recognize our supervisors Pierre Nugues at Lund University and Marcos Rubinstein at HEIG-VD, who contributed with vital suggestions, feedback and assistance during the developmental process, in addition to input on the writing of the thesis.
+
+## Citation
+Please consider citing this work in your publications if it helps your research.
+
+```
+@mastersthesis{vkaa2022,
+    author = {Viktor Karlsson and Aston Åkerman},
+    title = {Real-time detection of spelling mistakes in handwritten notes},
+    school = {Lund University, LTH},
+    year = 2022
+}
+```
+
 ## Reference
+For full reference list, see the [thesis]()
+
+```
+@inproceedings{baek2019STRcomparisons,
+title={What Is Wrong With Scene Text Recognition Model Comparisons? Dataset and Model Analysis},
+author={Baek, Jeonghun and Kim, Geewook and Lee, Junyeop and Park, Sungrae and Han, Dongyoon and Yun, Sangdoo and Oh, Seong Joon and Lee, Hwalsuk},
+booktitle = {International Conference on Computer Vision (ICCV)},
+year={2019},
+pubstate={published},
+tppubtype={inproceedings}
+}
+
+@misc{symspell,
+    author = {SeekStorm},
+    title = {SymSpell},
+    year = {2021},
+    note = {},
+    url = {https://github.com/wolfgarbe/SymSpell},
+    publisher: = {SeekStorm}
+}
+```
+
 ## Contact
+Feel free to contact us if there are questions about the code or thesis:
+
+[Aston Åkerman](https://www.linkedin.com/in/astonakerman/) &
+[Viktor Karlsson](https://www.linkedin.com/in/viktor-karlsson-b7209317a/)
 ## License
+```
+Copyright 2022-present Aston Åkerman & Viktor Karlsson
+```
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+```
+http://www.apache.org/licenses/LICENSE-2.0
+```
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+### Symspell
+```
+Copyright (c) 2022 Wolf Garbe
+Version: 6.7.2
+Author: Wolf Garbe <wolf.garbe@seekstorm.com>
+Maintainer: Wolf Garbe <wolf.garbe@seekstorm.com>
+URL: https://github.com/wolfgarbe/symspell
+Description: https://seekstorm.com/blog/1000x-spelling-correction/
+
+MIT License
+
+Copyright (c) 2022 Wolf Garbe
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+https://opensource.org/licenses/MIT
+```
