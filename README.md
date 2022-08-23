@@ -1,5 +1,5 @@
 
-# Ortographer: Real-Time Detection of Spelling Mistakes in Handwritten Notes. <!-- omit in toc --> 
+# Orthographer: Real-Time Detection of Spelling Mistakes in Handwritten Notes. <!-- omit in toc --> 
 
 Contents
 - [Introduction](#introduction)
@@ -30,14 +30,14 @@ Contents
   - [License](#license)
 
 # Introduction 
-Ortographer is an end-to-end application for real-time detection of spelling mistakes in handwritten notes. The system was created as a part of [this]() master thesis project in 2022.
+Orthographer is an end-to-end application for real-time detection of spelling mistakes in handwritten notes. The system was created as a part of [this]() master thesis project in 2022.
 
 To perform the task, the system runs a pipeline consisting of modules for video capturing, text detection, text recognition, post processing and finally spell correction. The pipeline is displayed in the image below.
 
  ![System Architecture](/misc/sys_arch.png)
 
 # Installation
-We recommend using [Anaconda](https://www.anaconda.com/distribution/) or the light-weight version [Miniconda](https://docs.conda.io/en/latest/miniconda.html) to make sure that the correct dependencies are installed. Once installed, create an environment by running the following command. The environment will contain all libraries needed to run the program with default settings. By default, the environment will be named `ortographer`, but you can choose another name using the `-n` option.
+We recommend using [Anaconda](https://www.anaconda.com/distribution/) or the light-weight version [Miniconda](https://docs.conda.io/en/latest/miniconda.html) to make sure that the correct dependencies are installed. Once installed, create an environment by running the following command. The environment will contain all libraries needed to run the program with default settings. By default, the environment will be named `orthographer`, but you can choose another name using the `-n` option.
 
 **OBS**. If running only on CPU, edit environment.yml to avoid installing GPU dependencies.
 
@@ -45,12 +45,12 @@ We recommend using [Anaconda](https://www.anaconda.com/distribution/) or the lig
 
 Next, activate the environment:
 
-    $ conda activate ortographer
+    $ conda activate orthographer
 
 ## Jupyter Notebooks
 To run the conda environment in jupyter notebook, register the environment by running:
 
-    $ python -m ipykernel install --user --name=ortographer
+    $ python -m ipykernel install --user --name=orthographer
 
 Now the environment can be selected in "Kernel > Change kernel" after starting jupyter notebook.
 
