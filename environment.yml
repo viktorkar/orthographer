@@ -35,4 +35,3 @@ dependencies:
   - typing-extensions=4.1
 
 # - fastwer~=0.1 - Fast algorithm used to calculate CER and WER scores. https://github.com/kahne/fastwer. Requires pybind11 so install with pip after activating conda environment.
-# - OBS. neuspell is also required if running with --post_process neuspell. See README.md or https://pypi.org/project/neuspell/.
