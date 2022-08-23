@@ -1,4 +1,4 @@
-name: ortographer
+name: orthographer
 channels:
   - conda-forge
   - defaults
