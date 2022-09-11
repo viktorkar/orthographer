@@ -1,5 +1,5 @@
 # Available Models
-The finetuned models can be downloaded from the [google drive folder here](https://drive.google.com/drive/folders/1jRYy1_Cs7pLex1zoNjcQNYo363Kt2Mt6?usp=sharing).
+The finetuned models can be downloaded from the [google drive folder here](https://drive.google.com/drive/folders/1p09AueBHQz16Miw9YkIWDLHjyx_uH3Kx?usp=sharing).
 
 ## Text Detection Models
 The YOLOv5 models were finetuned on parts of the IAM Forms dataset. The data preprocessing steps are available in the jupyter notebook [IAM_yolo_preprocess.ipynb](data-preprocessing/IAM_yolo_preprocess.ipynb). As can be seen, lines marked with *bad segmentation* were removed from the data, images were reshaped to 640x640 and only bounding boxes of words and numbers were used (not punctuation symbols). The models were trained on the Aachen train+val splits. 
