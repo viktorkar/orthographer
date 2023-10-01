@@ -30,7 +30,7 @@ Contents
   - [License](#license)
 
 # Introduction 
-Orthographer is an end-to-end application for real-time detection of spelling mistakes in handwritten notes. The system was created as a part of [this]() master thesis project in 2022.
+Orthographer is an end-to-end application for real-time detection of spelling mistakes in handwritten notes. The system was created as a part of [this](https://lup.lub.lu.se/student-papers/search/publication/9110650) master thesis project in 2022.
 
 To perform the task, the system runs a pipeline consisting of modules for video capturing, text detection, text recognition, post processing and finally spell correction. The pipeline is displayed in the image below.
 
